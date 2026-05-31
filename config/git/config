@@ -1,17 +1,18 @@
 [color "diff"]
-	frag = "brightyellow"
-	meta = "blue"
-	new = "green"
-	old = "red"
+    meta = blue
+    frag = brightyellow
+    old = red
+    new = green
 
-[interactive]
-	diffFilter = "/nix/store/my9wf4rbm1hkicf842kxk5bi3y4lfk3m-diff-so-fancy-1.4.10/bin/diff-so-fancy --patch"
+[diff]
+    algorithm = histogram
+    compactionHeuristic = true
 
 [pager]
-	diff = "/nix/store/my9wf4rbm1hkicf842kxk5bi3y4lfk3m-diff-so-fancy-1.4.10/bin/diff-so-fancy | /nix/store/c6bacbn93qg4a7g9n4czww8rg24dvysr-less-692/bin/less '--tabs=4' -RFX"
-	log = "/nix/store/my9wf4rbm1hkicf842kxk5bi3y4lfk3m-diff-so-fancy-1.4.10/bin/diff-so-fancy | /nix/store/c6bacbn93qg4a7g9n4czww8rg24dvysr-less-692/bin/less '--tabs=4' -RFX"
-	show = "/nix/store/my9wf4rbm1hkicf842kxk5bi3y4lfk3m-diff-so-fancy-1.4.10/bin/diff-so-fancy | /nix/store/c6bacbn93qg4a7g9n4czww8rg24dvysr-less-692/bin/less '--tabs=4' -RFX"
+    diff = "less --tabs=4 -RFX"
+    log = "less --tabs=4 -RFX"
+    show = "less --tabs=4 -RFX"
 
 [user]
-	email = "infraflakes@proton.me"
-	name = "infraflakes"
+    email = infraflakes@proton.me
+    name = infraflakes

@@ -15,12 +15,16 @@ set -gx XDG_MUSIC_DIR "$HOME"'/Music'
 set -gx XDG_PICTURES_DIR "$HOME"'/Pictures'
 set -gx XDG_STATE_HOME "$HOME"'/.local/state'
 set -gx XDG_VIDEOS_DIR "$HOME"'/Videos'
-set -gx XMODIFIERS '@im=fcitx'
-set -gx PATH "$HOME"'/.local/bin:'"$HOME"'/.cargo/bin'(test -n "$PATH" && echo ':' || echo)"$PATH"
 
-set -gx SSH_AUTH_SOCK '/run/user/1000/ssh-agent'
-if test -z "$SSH_AUTH_SOCK"; or test -z "$SSH_CONNECTION"
-    set -x SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent"
+set -q PATH; or set -g PATH # Ensure it exists
+set -gx PATH "$HOME/.local/bin" "$HOME/.cargo/bin" $PATH
+
+if not set -q SSH_AUTH_SOCK
+    if test -S "/run/user/1000/ssh-agent"
+        set -gx SSH_AUTH_SOCK '/run/user/1000/ssh-agent'
+    else
+        set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent"
+    end
 end
 
 set UID (id -u)
@@ -44,7 +48,6 @@ status is-interactive; and begin
 
     sn cd init fish | source
     fastfetch
-    set username (whoami)
-    echo "				Welcome back, $username!"
+    echo "				Welcome back, $USER!"
 
 end
