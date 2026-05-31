@@ -1,9 +1,9 @@
 # XDG Base Directory Specification
+set -gx EDITOR 'nvim'
 set -gx GLFW_IM_MODULE 'ibus'
 set -gx SDL_IM_MODULE 'fcitx'
 set -gx SHELL 'fish'
 set -gx TMUX_TMPDIR '/tmp'
-set -gx EDITOR 'nvim'
 set -gx VISUAL 'nvim'
 set -gx XDG_CACHE_HOME "$HOME"'/.cache'
 set -gx XDG_CONFIG_HOME "$HOME"'/.config'
