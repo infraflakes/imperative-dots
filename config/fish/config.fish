@@ -1,9 +1,9 @@
 # XDG Base Directory Specification
-set -gx EDITOR 'nvim'
 set -gx GLFW_IM_MODULE 'ibus'
 set -gx SDL_IM_MODULE 'fcitx'
 set -gx SHELL 'fish'
 set -gx TMUX_TMPDIR '/tmp'
+set -gx EDITOR 'nvim'
 set -gx VISUAL 'nvim'
 set -gx XDG_CACHE_HOME "$HOME"'/.cache'
 set -gx XDG_CONFIG_HOME "$HOME"'/.config'
@@ -18,14 +18,6 @@ set -gx XDG_VIDEOS_DIR "$HOME"'/Videos'
 
 set -q PATH; or set -g PATH # Ensure it exists
 set -gx PATH "$HOME/.local/bin" "$HOME/.cargo/bin" $PATH
-
-if not set -q SSH_AUTH_SOCK
-    if test -S "/run/user/1000/ssh-agent"
-        set -gx SSH_AUTH_SOCK '/run/user/1000/ssh-agent'
-    else
-        set -gx SSH_AUTH_SOCK "$XDG_RUNTIME_DIR/ssh-agent"
-    end
-end
 
 set UID (id -u)
 set -g fish_color_command 8ab4f8 --bold

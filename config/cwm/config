@@ -29,16 +29,15 @@ bind-key 4-space menu-cmd
 bind-mouse 3 menu-cmd
 command terminal   "ghostty"
 command editor   "ghostty -e nvim"
-command files      "ghostty -e btm"
+command files      "ghostty -e yazi"
 command browser    "firefox"
 command music    "pear-desktop"
 command vesktop    "vesktop"
-command monitor    "ghostty -e htop"
+command monitor    "ghostty -e btm"
 command screenshot    "flameshot gui"
 command clipboard    "copyq show"
 command "-------------" "true"
-command suspend    "~/.config/scripts/suspend.sh"
-command logout     quit
+command suspend    "suspend.sh"
 command reboot     "reboot"
 command shutdown   "shutdown -P now"
 

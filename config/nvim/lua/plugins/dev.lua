@@ -151,7 +151,7 @@ return {
       end,
       formatters_by_ft = {
         lua = { "stylua" },
-        nix = { "alejandra" },
+        nix = { "nixfmt" },
         rs = { "cargo fmt" },
         go = { "gofmt" },
         cpp = { "clang-format" },
