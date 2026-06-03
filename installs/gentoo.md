@@ -156,7 +156,7 @@ Because as of now, circular dependency happens between tiff and webp, temporaril
 
 ```
 USE="-webp" emerge -1v media-libs/tiff
-USE="-truetype" emerge --quiet --oneshot dev-python/pillow
+USE="-tiff" emerge -1v media-libs/libwebp
 ```
 
 And install base system:
