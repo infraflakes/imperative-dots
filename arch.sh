@@ -7,7 +7,7 @@ LOG_FILE="$HOME/.local/state/pkg_install.log"
 mkdir -p "$(dirname "$LOG_FILE")"
 
 # Package Categorization
-DEV_CORE="git neovim openssh stylua opencode"
+DEV_CORE="git neovim openssh stylua opencode ghostty"
 SYS_HW="bluetuith brightnessctl lm_sensors playerctl podman pulsemixer tailscale"
 CLI_UTIL="bat bottom fastfetch fd fzf ncdu ripgrep stow tmux yazi"
 ARCHIVES="p7zip unrar unzip zip"

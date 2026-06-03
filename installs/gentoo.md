@@ -254,11 +254,10 @@ echo "media-video/obs-studio ~amd64" >> /etc/portage/package.accept_keywords/obs
 ```
 
 ```
-emerge -q doas light sys-apps/lm-sensors playerctl app-containers/podman pulsemixer tailscale p7zip unrar unzip zip imv mpv obs-studio firefox-bin fish
+emerge -q doas light sys-apps/lm-sensors playerctl app-containers/podman pulsemixer tailscale p7zip unrar unzip zip imv mpv obs-studio firefox-bin fish ghostty
 echo "permit persist keepenv :wheel" > /etc/doas.conf
 chsh -s $(which fish)
-su nixuris
-chsh -s $(which fish)
+chsh -s $(which fish) nixuris
 ```
 
 Set up GRUB:
@@ -266,14 +265,19 @@ Set up GRUB:
 ```
 echo 'GRUB_PLATFORMS="efi-64"' >> /etc/portage/make.conf
 emerge -q sys-boot/grub efibootmgr
-grub-install --efi-directory=/boot
-grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 Add this to /etc/default/grub:
 
 ```
 GRUB_CMDLINE_LINUX_DEFAULT="quiet splash nvidia-drm.modeset=1"
+```
+
+Then:
+
+```
+grub-install --efi-directory=/boot
+grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 Exit chroot:
