@@ -52,18 +52,21 @@ Now we edit the make.conf file:
 vim etc/portage/make.conf
 ```
 
+For `i7-12700h` chipset:
+
 ```
-COMMON_FLAGS="-march=native -O2 -pipe"
+COMMON_FLAGS="-march=alderlake -O2 -pipe"
 CFLAGS="${COMMON_FLAGS}"
 CXXFLAGS="${COMMON_FLAGS}"
 FCFLAGS="${COMMON_FLAGS}"
 FFLAGS="${COMMON_FLAGS}"
+EMERGE_DEFAULT_OPTS="--verbose --ask --update --deep --newuse"
 # Enable the official Gentoo binary repository
 EMERGE_DEFAULT_OPTS="${EMERGE_DEFAULT_OPTS} --usepkg=y --getbinpkg=y --binpkg-respect-use=y"
 FEATURES="${FEATURES} getbinpkg"
 BINPKG_FORMAT="gpkg"
 MAKEOPTS="-j16 -l14"
-USE="X alsa pipewire sound-server pulseaudio elogind fcitx5 dbus -systemd -gnome -kde -wayland -aqua -coreaudio -cups -dvd -dvdr -cdr -emboss -doc -test -man -handbook -examples -gtk-doc -introspection -vala -nls -semantic-desktop -geolocation"
+USE="X alsa pipewire sound-server pulseaudio elogind fcitx5 dbus -systemd -gnome -kde -wayland -aqua -coreaudio -cups -dvd -dvdr -cdr -emboss -doc -test -man -handbook -examples -gtk-doc -vala -nls -semantic-desktop -geolocation"
 
 # Video Drivers:
 VIDEO_CARDS="iris nvidia"
@@ -170,6 +173,7 @@ emerge -q neovim
 Group license compliance for firmware and define the kernel layout infrastructure explicitly:
 
 ```bash
+mkdir -p /etc/portage/package.license
 echo "sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE" > /etc/portage/package.license/firmware
 echo "sys-kernel/installkernel dracut" > /etc/portage/package.use/kernel
 ```
