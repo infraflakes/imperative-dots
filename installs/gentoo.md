@@ -98,6 +98,7 @@ Chroot:
 chroot /mnt/gentoo /bin/bash
 source /etc/profile
 export PS1="(chroot) ${PS1}
+mkdir -p /var/tmp/portage && mount -t tmpfs -o size=12G,nodev,nosuid,noatime tmpfs /var/tmp/portage
 emerge-webrsync
 emerge --sync --quiet
 ```
@@ -177,6 +178,7 @@ Set up fstab:
 ```
 echo "UUID=$(blkid -s UUID -o value /dev/nvme0n1p1)  /boot  vfat  noatime,umask=0077,fmask=0177  0 2" >> /etc/fstab
 echo "UUID=$(blkid -s UUID -o value /dev/nvme0n1p2)  /  ext4  noatime,defaults  0 1" >> /etc/fstab
+echo "tmpfs /var/tmp/portage tmpfs size=12G,nodev,nosuid,noatime 0 0" >> /etc/fstab
 ```
 
 ## User related
@@ -199,7 +201,7 @@ Set up network:
 
 ```
 echo "net-misc/networkmanager -iwd wifi" >> /etc/portage/package.use/networkmanager
-emerge -q net-misc/networkmanager net-wireless/wpa_supplicant
+emerge -q networkmanager wpa_supplicant
 rc-update add NetworkManager default
 ```
 
