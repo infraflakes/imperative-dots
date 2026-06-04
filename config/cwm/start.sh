@@ -7,11 +7,6 @@ export QT_IM_MODULE=fcitx
 export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=fcitx
 
-xsetroot -solid "#1E1B25"
-xset r rate 200 50 &
-fcitx5 &
-gentoo-pipewire-launcher &
-
 # 2. D-Bus Environment Handlers
 launch_cwm() {
     # Update the variables inside the newly created D-Bus session
@@ -22,6 +17,11 @@ launch_cwm() {
     # Start portals inside the active D-Bus session
     /usr/libexec/xdg-desktop-portal-gtk &
     /usr/libexec/xdg-desktop-portal &
+
+    xsetroot -solid "#1E1B25"
+    xset r rate 200 50 &
+    fcitx5 &
+    gentoo-pipewire-launcher &
 
     # Spawn Window Manager
     exec cwm -c ~/.config/cwm/config

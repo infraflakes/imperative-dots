@@ -278,7 +278,15 @@ umount -R /mnt/gentoo
 
 ## POST INSTALL
 
-GURU PKGS:
+# Lemonbar
+
+```
+https://github.com/drscream/lemonbar-xft
+cd lemonbar-xft
+doas make clean install
+```
+
+# GURU PKGS:
 
 ```bash
 doas emerge -q app-eselect/eselect-repository
@@ -295,9 +303,26 @@ echo '*/*::guru ~amd64' | doas tee /etc/portage/package.accept_keywords/guru
 doas emerge -q yazi bluetuith vesktop-bin
 ```
 
-Flatpak:
+# Flatpak:
 
 ```bash
 flatpak install --user flathub com.valvesoftware.Steam
 flatpak install --user flathub org.freedesktop.Platform.VulkanLayer.MangoHud
+```
+
+# Others
+
+sutils:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/infraflakes/sutils/main/install.sh -o install.sh
+chmod +x install.sh
+./install.sh
+```
+
+nixenv:
+
+```bash
+curl -sSL "https://raw.githubusercontent.com/infraflakes/nixenv/main/nixenv" -o ~/.local/bin/nixenv
+chmod +x ~/.local/bin/nixenv
 ```
