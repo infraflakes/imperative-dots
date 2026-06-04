@@ -203,6 +203,7 @@ emerge -q networkmanager wpa_supplicant sys-apps/dbus elogind dev-vcs/git fastfe
 rc-update add NetworkManager default
 rc-update add dbus default
 rc-update add elogind boot
+rc-update add tailscale default
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
 
@@ -278,11 +279,16 @@ umount -R /mnt/gentoo
 
 ## POST INSTALL
 
-# SSH
+# SSH and tailscale
 
 ```bash
 ssh-keygen -t ed25519 -C "infraflakes@proton.me"
 ssh-add ~/.ssh/id_ed25519
+cat ~/.ssh/id_ed25519.pub
+```
+
+```bash
+doas rc-update add tailscale default
 ```
 
 # Lemonbar
