@@ -196,7 +196,7 @@ echo "media-video/obs-studio ~amd64" >> /etc/portage/package.accept_keywords/obs
 ```
 
 ```bash
-emerge -q networkmanager wpa_supplicant sys-apps/dbus elogind dev-vcs/git fastfetch media-video/pipewire media-video/wireplumber sys-auth/polkit x11-base/xorg-drivers x11-drivers/nvidia-drivers x11-base/xorg-server x11-apps/xrandr xdg-utils cwm flameshot slock x11-misc/xclip xdg-desktop-portal-gtk fcitx fcitx-configtool fcitx-gtk fcitx-unikey doas light sys-apps/lm-sensors playerctl app-containers/podman pulsemixer tailscale p7zip unrar unzip zip imv mpv obs-studio firefox-bin fish ghostty sys-boot/grub efibootmgr
+emerge -q networkmanager wpa_supplicant sys-apps/dbus elogind dev-vcs/git fastfetch media-video/pipewire media-video/wireplumber sys-auth/polkit x11-base/xorg-drivers x11-drivers/nvidia-drivers x11-base/xorg-server x11-apps/xrandr xdg-utils cwm flameshot slock x11-misc/xclip xdg-desktop-portal-gtk fcitx fcitx-configtool fcitx-gtk fcitx-unikey doas light sys-apps/lm-sensors playerctl app-containers/podman pulsemixer tailscale p7zip unrar unzip zip imv mpv obs-studio firefox-bin fish ghostty sys-boot/grub efibootmgr bat bottom fd fzf ncdu ripgrep stow tmux
 ```
 
 ```bash
