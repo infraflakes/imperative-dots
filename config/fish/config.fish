@@ -33,6 +33,8 @@ end
 
 status is-interactive; and begin
 
+    ssh_agent
+
     alias cat bat
     alias cd scd
     alias e nvim

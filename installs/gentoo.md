@@ -278,6 +278,13 @@ umount -R /mnt/gentoo
 
 ## POST INSTALL
 
+# SSH
+
+```bash
+ssh-keygen -t ed25519 -C "infraflakes@proton.me"
+ssh-add ~/.ssh/id_ed25519
+```
+
 # Lemonbar
 
 ```
