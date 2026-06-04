@@ -79,6 +79,31 @@ INPUT_DEVICES="libinput"
 LC_MESSAGES=C.UTF-8
 GRUB_PLATFORMS="efi-64"
 ```
+## Package configuration
+
+```bash
+vim /etc/portage/package.accept_keywords
+```
+
+```
+*/*::guru ~amd64
+media-video/obs-studio ~amd64
+app-i18n/fcitx-unikey ~amd64
+gui-wm/gamescope ~amd64
+media-libs/vkroots ~amd64
+```
+
+```bash
+vim /etc/portage/package.use
+```
+
+```
+
+media-video/pipewire sound-server pipewire-alsa pulseaudio
+media-sound/pulseaudio -daemon
+net-misc/networkmanager -iwd wifi
+sys-kernel/installkernel dracut
+```
 
 Ensure networking works:
 
@@ -175,9 +200,7 @@ touch /etc/kernel/preinst.d/05-check-chroot.install
 ```
 
 ```bash
-mkdir -p /etc/portage/package.license
-echo "sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE" > /etc/portage/package.license/firmware
-echo "sys-kernel/installkernel dracut" > /etc/portage/package.use/kernel
+echo "sys-kernel/linux-firmware @BINARY-REDISTRIBUTABLE" > /etc/portage/package.license
 ```
 
 Install firmware stacks and the pre-compiled kernel in one single transaction
@@ -189,14 +212,7 @@ emerge -q sys-kernel/linux-firmware sys-firmware/sof-firmware sys-kernel/install
 Set up user session stuff:
 
 ```bash
-echo "net-misc/networkmanager -iwd wifi" >> /etc/portage/package.use/networkmanager
-echo -e "media-video/pipewire sound-server pipewire-alsa pulseaudio\nmedia-sound/pulseaudio -daemon" >> /etc/portage/package.use/audio
-echo "app-i18n/fcitx-unikey ~amd64" >> /etc/portage/package.accept_keywords/fcitx-unikey
-echo "media-video/obs-studio ~amd64" >> /etc/portage/package.accept_keywords/obs
-```
-
-```bash
-emerge -q networkmanager wpa_supplicant sys-apps/dbus elogind dev-vcs/git fastfetch media-video/pipewire media-video/wireplumber sys-auth/polkit x11-base/xorg-drivers x11-drivers/nvidia-drivers x11-base/xorg-server x11-apps/xrandr xsetroot xdg-utils cwm flameshot slock x11-misc/xclip xdg-desktop-portal-gtk fcitx fcitx-configtool fcitx-gtk fcitx-unikey doas light sys-apps/lm-sensors playerctl app-containers/podman pulsemixer tailscale p7zip unrar unzip zip imv mpv obs-studio firefox-bin fish ghostty sys-boot/grub efibootmgr bat bottom fd fzf ncdu ripgrep stow tmux noto noto-cjk noto-emoji jetbrains-mono symbols-nerd-font flatpak power-profiles-daemon
+emerge -q networkmanager wpa_supplicant sys-apps/dbus elogind dev-vcs/git fastfetch media-video/pipewire media-video/wireplumber sys-auth/polkit x11-base/xorg-drivers x11-drivers/nvidia-drivers x11-base/xorg-server x11-apps/xrandr xsetroot xdg-utils cwm flameshot slock x11-misc/xclip xdg-desktop-portal-gtk fcitx fcitx-configtool fcitx-gtk fcitx-unikey doas light sys-apps/lm-sensors playerctl app-containers/podman pulsemixer tailscale p7zip unrar unzip zip imv mpv obs-studio firefox-bin fish ghostty sys-boot/grub efibootmgr bat bottom fd fzf ncdu ripgrep stow tmux noto noto-cjk noto-emoji jetbrains-mono symbols-nerd-font flatpak power-profiles-daemon gamescope
 ```
 
 ```bash
@@ -309,19 +325,25 @@ doas emerge -q app-eselect/eselect-repository
 doas eselect repository enable guru
 doas emaint sync -r guru
 ```
-```bash
-echo '*/*::guru ~amd64' | doas tee /etc/portage/package.accept_keywords/guru
-```
 
 ```bash
 doas emerge -q yazi bluetuith vesktop-bin
 ```
 
-# Flatpak:
+# Steam:
 
 ```bash
 flatpak install --user flathub com.valvesoftware.Steam
 flatpak install --user flathub org.freedesktop.Platform.VulkanLayer.MangoHud
+```
+Launch args (best choose proton hotfix):
+```
+SteamOS=1 MANGOHUD=1 %command%
+```
+
+Run with:
+```
+gamescope -w 1920 -h 1080 -W 1920 -H 1080 -f -r 144 -- flatpak run com.valvesoftware.Steam
 ```
 
 # Others
