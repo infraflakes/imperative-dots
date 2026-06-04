@@ -196,13 +196,14 @@ echo "media-video/obs-studio ~amd64" >> /etc/portage/package.accept_keywords/obs
 ```
 
 ```bash
-emerge -q networkmanager wpa_supplicant sys-apps/dbus elogind dev-vcs/git fastfetch media-video/pipewire media-video/wireplumber sys-auth/polkit x11-base/xorg-drivers x11-drivers/nvidia-drivers x11-base/xorg-server x11-apps/xrandr xsetroot xdg-utils cwm flameshot slock x11-misc/xclip xdg-desktop-portal-gtk fcitx fcitx-configtool fcitx-gtk fcitx-unikey doas light sys-apps/lm-sensors playerctl app-containers/podman pulsemixer tailscale p7zip unrar unzip zip imv mpv obs-studio firefox-bin fish ghostty sys-boot/grub efibootmgr bat bottom fd fzf ncdu ripgrep stow tmux
+emerge -q networkmanager wpa_supplicant sys-apps/dbus elogind dev-vcs/git fastfetch media-video/pipewire media-video/wireplumber sys-auth/polkit x11-base/xorg-drivers x11-drivers/nvidia-drivers x11-base/xorg-server x11-apps/xrandr xsetroot xdg-utils cwm flameshot slock x11-misc/xclip xdg-desktop-portal-gtk fcitx fcitx-configtool fcitx-gtk fcitx-unikey doas light sys-apps/lm-sensors playerctl app-containers/podman pulsemixer tailscale p7zip unrar unzip zip imv mpv obs-studio firefox-bin fish ghostty sys-boot/grub efibootmgr bat bottom fd fzf ncdu ripgrep stow tmux noto noto-cjk noto-emoji jetbrains-mono symbols-nerd-font flatpak
 ```
 
 ```bash
 rc-update add NetworkManager default
 rc-update add dbus default
 rc-update add elogind boot
+flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 ```
 
 ( You can launch audio with `gentoo-pipewire-launcher` script)
@@ -280,16 +281,23 @@ umount -R /mnt/gentoo
 GURU PKGS:
 
 ```bash
-app-eselect/eselect-repository
+doas emerge -q app-eselect/eselect-repository
 ```
 ```bash
-eselect repository enable guru
-emaint sync -r guru
+doas eselect repository enable guru
+doas emaint sync -r guru
 ```
 ```bash
-echo '*/*::guru ~amd64' > /etc/portage/package.accept_keywords/guru
+echo '*/*::guru ~amd64' | doas tee /etc/portage/package.accept_keywords/guru
 ```
 
 ```bash
-emerge -q yazi bluetuith
+doas emerge -q yazi bluetuith vesktop-bin
+```
+
+Flatpak:
+
+```bash
+flatpak install --user flathub com.valvesoftware.Steam
+flatpak install --user flathub org.freedesktop.Platform.VulkanLayer.MangoHud
 ```

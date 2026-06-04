@@ -6,5 +6,5 @@
 
 ```bash
 stow -t ~/.config config
-stow -t ~/.local/bin local/bin
+stow -t ~/.local/bin bin
 ```

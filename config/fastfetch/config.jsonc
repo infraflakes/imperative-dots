@@ -7,7 +7,7 @@
       "right": 6,
       "top": 2
     },
-    "source": "~/.config/fastfetch/assets/nix.txt"
+    "source": "~/.config/fastfetch/assets/gentoo.txt"
   },
   "modules": [
     "break",

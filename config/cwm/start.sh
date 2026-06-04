@@ -1,18 +1,31 @@
 #!/usr/bin/env bash
-xset r rate 200 50 &
-if command -v systemctl --user >/dev/null 2>&1; then
-    systemctl --user import-environment DISPLAY XAUTHORITY
-    dbus-update-activation-environment --systemd DISPLAY XAUTHORITY
-fi
+
+# 1. Environment & Inputs
 export XMODIFIERS=@im=fcitx
-export GTK_IM_MODULE=fcitx
+export GTK_IM_MODULE=xim
 export QT_IM_MODULE=fcitx
 export SDL_IM_MODULE=fcitx
 export GLFW_IM_MODULE=fcitx
+
 xsetroot -solid "#1E1B25"
-~/.config/cwm/bar.sh &
+xset r rate 200 50 &
 fcitx5 &
-# xrandr --output DP-2 --mode 1920x1080 --rate 144.00
-# export __GLX_VENDOR_LIBRARY_NAME=nvidia
-# export __NV_PRIME_RENDER_OFFLOAD=1
-exec cwm -c ~/.config/cwm/config
+gentoo-pipewire-launcher &
+
+# 2. D-Bus Environment Handlers
+launch_cwm() {
+    # Update the variables inside the newly created D-Bus session
+    if command -v dbus-update-activation-environment >/dev/null 2>&1; then
+        dbus-update-activation-environment --systemd DISPLAY XAUTHORITY XMODIFIERS GTK_IM_MODULE QT_IM_MODULE SDL_IM_MODULE GLFW_IM_MODULE
+    fi
+
+    # Start portals inside the active D-Bus session
+    /usr/libexec/xdg-desktop-portal-gtk &
+    /usr/libexec/xdg-desktop-portal &
+
+    # Spawn Window Manager
+    exec cwm -c ~/.config/cwm/config
+}
+
+# 3. Initialize D-Bus and run the function
+exec dbus-run-session bash -c "$(declare -f launch_cwm); launch_cwm"

@@ -1,7 +1,7 @@
 unbind-key all
 unbind-mouse all
 
-fontname "JetBrainsMono Nerd Font:pixelsize=13:bold"
+fontname "JetBrainsMono:pixelsize=13:bold"
 borderwidth 3
 
 color activeborder   "#86afef"
@@ -17,24 +17,28 @@ sticky yes # New windows automatically join current workspace
 bind-key XF86AudioRaiseVolume "pactl set-sink-volume @DEFAULT_SINK@ +2%"
 bind-key XF86AudioLowerVolume "pactl set-sink-volume @DEFAULT_SINK@ -2%"
 bind-key XF86AudioMute "pactl set-sink-mute @DEFAULT_SINK@ toggle"
-bind-key XF86MonBrightnessUp "brightnessctl set +5%"
-bind-key XF86MonBrightnessDown "brightnessctl set 5%-"
+bind-key XF86MonBrightnessUp "light -A 5"
+bind-key XF86MonBrightnessDown "light -U 5"
 
-bind-key 4-Return    "ghostty"  # Direct fast path to terminal
+bind-key 4-Return    "kitty --single-instance"
 bind-key 4-l     "slock"
 bind-key M-space         menu-exec     # Built-in system app path launcher
 bind-key 4-slash menu-window
 
 bind-key 4-space menu-cmd
 bind-mouse 3 menu-cmd
-command terminal   "ghostty"
-command editor   "ghostty -e nvim"
-command files      "ghostty -e yazi"
-command browser    "firefox"
+command terminal   "kitty"
+command editor   "kitty -e nvim"
+command files      "kitty -e yazi"
+command browser    "firefox-bin"
 command music    "pear-desktop"
-command vesktop    "vesktop"
-command monitor    "ghostty -e btm"
+command vesktop    "vesktop-bin"
+command monitor    "kitty -e btm"
 command screenshot    "flameshot gui"
+command "-------------" "true"
+command suspend    "suspend.sh"
+command reboot     "loginctl reboot"
+command shutdown   "loginctl poweroff"
 
 bind-key 4-q         window-close
 bind-key M-Tab window-cycle
