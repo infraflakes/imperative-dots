@@ -22,6 +22,7 @@ launch_cwm() {
     xset r rate 200 50 &
     fcitx5 &
     gentoo-pipewire-launcher &
+    ~/.config/cwm/bar.sh &
 
     # Spawn Window Manager
     exec cwm -c ~/.config/cwm/config

@@ -331,22 +331,6 @@ doas emaint sync -r guru
 doas emerge -q yazi bluetuith vesktop-bin
 ```
 
-# Steam:
-
-```bash
-flatpak install --user flathub com.valvesoftware.Steam
-flatpak install --user flathub org.freedesktop.Platform.VulkanLayer.MangoHud
-```
-Launch args (best choose proton hotfix):
-```
-SteamOS=1 MANGOHUD=1 %command%
-```
-
-Run with:
-```
-gamescope -w 1920 -h 1080 -W 1920 -H 1080 -f -r 144 -- flatpak run com.valvesoftware.Steam
-```
-
 # Others
 
 sutils:
