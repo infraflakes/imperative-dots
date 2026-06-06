@@ -22,12 +22,15 @@ bind-key XF86MonBrightnessDown "light -U 5"
 
 bind-key 4-Return    "kitty --single-instance"
 bind-key 4-l     "slock"
-bind-key M-space         menu-exec     # Built-in system app path launcher
+bind-key M-space         menu-exec
 bind-key 4-slash menu-window
 
 bind-key 4-space menu-cmd
 bind-mouse 3 menu-cmd
 command terminal   "kitty"
+command audio    "kitty -e pulsemixer"
+command bluetooth    "kitty -e bluetuith"
+command wifi    "kitty -e nmtui"
 command editor   "kitty -e nvim"
 command files      "kitty -e yazi"
 command browser    "firefox-bin"
@@ -69,5 +72,5 @@ bind-key 4S-6        window-movetogroup-6
 bind-key 4S-7        window-movetogroup-7
 bind-key 4S-8        window-movetogroup-8
 
-bind-key 4S-r        restart            # Live-reload
-bind-key 4-BackSpace        quit               # Clean log-out out of X11 session
+bind-key 4S-r               restart
+bind-key 4-BackSpace        quit

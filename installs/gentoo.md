@@ -297,7 +297,7 @@ umount -R /mnt/gentoo
 
 ## POST INSTALL
 
-# SSH and tailscale
+# SSH, bluetooth and tailscale
 
 ```bash
 ssh-keygen -t ed25519 -C "infraflakes@proton.me"
@@ -307,6 +307,7 @@ cat ~/.ssh/id_ed25519.pub
 
 ```bash
 doas rc-update add tailscale default
+doas rc-update add bluetooth default
 ```
 
 # Lemonbar
