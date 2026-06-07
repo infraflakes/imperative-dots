@@ -68,14 +68,14 @@ BINPKG_FORMAT="gpkg"
 MAKEOPTS="-j16 -l14"
 USE="mount nftables X alsa pipewire sound-server opus pulseaudio elogind fcitx5 dbus -systemd -gnome -kde -wayland -aqua -coreaudio -cups -dvd -dvdr -cdr -emboss -doc -test -man -handbook -examples -gtk-doc -vala -nls -semantic-desktop -geolocation"
 
-# X11:
+# Specifics:
 ACCEPT_LICENSE="* -@EULA NVIDIA-r1"
 VIDEO_CARDS="intel nvidia"
 INPUT_DEVICES="libinput"
+PYTHON_TARGETS="${PYTHON_TARGETS} python3_13"
 
-# CPU Specific Flags: 
-# You can generate the exact string later using 'app-portage/cpuid2cpuflags'
-#CPU_FLAGS_X86="aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt rdrand sha sse sse2 sse3 sse4_1 sse4_2 ssse3"
+# You can generate the exact string using 'app-portage/cpuid2cpuflags'
+CPU_FLAGS_X86="aes avx avx2 avx_vnni bmi1 bmi2 f16c fma3 mmx mmxext pclmul popcnt rdrand sha sse sse2 sse3 sse4_1 sse4_2 ssse3 vpclmulqdq"
 LC_MESSAGES=C.UTF-8
 GRUB_PLATFORMS="efi-64"
 ```
@@ -212,7 +212,7 @@ emerge -q sys-kernel/linux-firmware sys-firmware/sof-firmware sys-kernel/install
 Set up user session stuff:
 
 ```bash
-emerge -q networkmanager wpa_supplicant sys-apps/dbus elogind dev-vcs/git fastfetch media-video/pipewire media-video/wireplumber sys-auth/polkit x11-base/xorg-drivers x11-drivers/nvidia-drivers x11-base/xorg-server x11-apps/xrandr xsetroot xdg-utils cwm flameshot slock x11-misc/xclip xdg-desktop-portal-gtk fcitx fcitx-configtool fcitx-gtk fcitx-unikey doas light sys-apps/lm-sensors playerctl app-containers/podman pulsemixer tailscale p7zip unrar unzip zip imv mpv obs-studio firefox-bin fish ghostty sys-boot/grub os-prober efibootmgr bat bottom fd fzf ncdu ripgrep stow tmux noto noto-cjk noto-emoji jetbrains-mono symbols-nerd-font flatpak power-profiles-daemon gamescope
+emerge -q networkmanager wpa_supplicant sys-apps/dbus elogind dev-vcs/git fastfetch media-video/pipewire media-video/wireplumber sys-auth/polkit x11-base/xorg-drivers x11-drivers/nvidia-drivers x11-base/xorg-server x11-apps/xrandr xsetroot xdg-utils dmenu spectrwm flameshot slock x11-misc/xclip xdg-desktop-portal-gtk fcitx fcitx-configtool fcitx-gtk fcitx-unikey doas light sys-apps/lm-sensors playerctl app-containers/podman pulsemixer tailscale p7zip unrar unzip zip imv mpv obs-studio firefox-bin fish ghostty sys-boot/grub os-prober efibootmgr bat bottom fd fzf ncdu ripgrep stow tmux noto noto-cjk noto-emoji jetbrains-mono symbols-nerd-font flatpak power-profiles-daemon gamescope
 ```
 
 ```bash
@@ -308,14 +308,6 @@ cat ~/.ssh/id_ed25519.pub
 ```bash
 doas rc-update add tailscale default
 doas rc-update add bluetooth default
-```
-
-# Lemonbar
-
-```
-https://github.com/drscream/lemonbar-xft
-cd lemonbar-xft
-doas make clean install
 ```
 
 # GURU PKGS:

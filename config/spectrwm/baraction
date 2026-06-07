@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Battery status for spectrwm bar
+# Clean output, no color indices
+
+while :; do
+    if [ -d /sys/class/power_supply/BAT0 ]; then
+        BAT="/sys/class/power_supply/BAT0"
+    elif [ -d /sys/class/power_supply/BAT1 ]; then
+        BAT="/sys/class/power_supply/BAT1"
+    else
+        echo "NO BAT"
+        sleep 30
+        continue
+    fi
+
+    CAPACITY=$(cat "$BAT/capacity")
+    STATUS=$(cat "$BAT/status")
+
+    if [ "$STATUS" = "Charging" ] || [ "$STATUS" = "Full" ]; then
+        ICON="CHARGING"
+    else
+        ICON="DISCHARGED"
+    fi
+
+    echo "$ICON $CAPACITY%"
+
+    sleep 30
+done
