@@ -72,7 +72,6 @@ USE="mount nftables X alsa pipewire sound-server opus pulseaudio elogind fcitx5 
 ACCEPT_LICENSE="* -@EULA NVIDIA-r1"
 VIDEO_CARDS="intel nvidia"
 INPUT_DEVICES="libinput"
-PYTHON_TARGETS="${PYTHON_TARGETS} python3_13"
 
 # You can generate the exact string using 'app-portage/cpuid2cpuflags'
 CPU_FLAGS_X86="aes avx avx2 avx_vnni bmi1 bmi2 f16c fma3 mmx mmxext pclmul popcnt rdrand sha sse sse2 sse3 sse4_1 sse4_2 ssse3 vpclmulqdq"
