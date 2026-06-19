@@ -8,7 +8,7 @@ vim.o.showmode = true
 
 vim.opt.clipboard = "unnamedplus"
 vim.g.clipboard = {
-  name = "OSC 52",
+  name = "osc52",
   copy = {
     ["+"] = require("vim.ui.clipboard.osc52").copy "+",
     ["*"] = require("vim.ui.clipboard.osc52").copy "*",
