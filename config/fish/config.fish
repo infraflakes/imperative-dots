@@ -1,10 +1,13 @@
-# XDG Base Directory Specification
 set -gx EDITOR 'nvim'
-set -gx GLFW_IM_MODULE 'ibus'
-set -gx SDL_IM_MODULE 'fcitx'
-set -gx SHELL 'fish'
-set -gx TMUX_TMPDIR '/tmp'
 set -gx VISUAL 'nvim'
+
+set -gx SDL_IM_MODULE 'fcitx'
+set -gx XMODIFIERS '@im=fcitx'
+set -gx GTK_IM_MODULE 'fcitx'
+set -gx QT_IM_MODULE 'fcitx'
+
+set -gx TMUX_TMPDIR '/tmp'
+
 set -gx XDG_CACHE_HOME "$HOME"'/.cache'
 set -gx XDG_CONFIG_HOME "$HOME"'/.config'
 set -gx XDG_DATA_HOME "$HOME"'/.local/share'
@@ -17,9 +20,10 @@ set -gx XDG_STATE_HOME "$HOME"'/.local/state'
 set -gx XDG_VIDEOS_DIR "$HOME"'/Videos'
 
 set -q PATH; or set -g PATH # Ensure it exists
-set -gx PATH "$HOME/.local/bin" $PATH
-set -gx PATH "$HOME/.config/swm/bin" $PATH
-set -gx PATH "$HOME/.cargo/bin" $PATH
+fish_add_path $HOME/.local/bin
+fish_add_path $HOME/.cargo/bin
+fish_add_path $HOME/.config/swm/bin
+fish_add_path $HOME/.opencode/bin
 
 set UID (id -u)
 set -g fish_color_command 8ab4f8 --bold
@@ -43,10 +47,7 @@ status is-interactive; and begin
     alias tm 'tmux new-session -A -s default'
 
     sn cd init fish | source
-    fastfetch
-    echo "				Welcome back, $USER!"
+    # fastfetch
+    # echo "				Welcome back, $USER!"
 
 end
-
-# opencode
-fish_add_path /home/nixuris/.opencode/bin
