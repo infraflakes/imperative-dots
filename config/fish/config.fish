@@ -1,3 +1,5 @@
+set UID (id -u)
+
 set -gx EDITOR 'nvim'
 set -gx VISUAL 'nvim'
 
@@ -25,12 +27,17 @@ fish_add_path $HOME/.cargo/bin
 fish_add_path $HOME/.config/swm/bin
 fish_add_path $HOME/.opencode/bin
 
-set UID (id -u)
-set -g fish_color_command 8ab4f8 --bold
-set -g fish_color_param ccd0d9 --bold
-set -g fish_color_redirection 8ab4f8 --bold
-set -g fish_color_error cf6679 --bold
-set -g fish_color_autosuggestion 908caa --bold
+# Commands (Flexoki Black)
+set -g fish_color_command 100f0f --bold
+# Parameters (Base-600 / Dark Gray for contrast)
+set -g fish_color_param 6f6e69 --bold
+# Redirections (Flexoki Black)
+set -g fish_color_redirection 100f0f --bold
+# Errors (Flexoki Red)
+set -g fish_color_error af3029 --bold
+# Autosuggestions (Base-300 / Muted Gray)
+set -g fish_color_autosuggestion b7b5ac --bold
+# Selection (Reverse video)
 set -g fish_color_selection --reverse --bold
 
 status is-login; and begin
@@ -44,6 +51,7 @@ status is-interactive; and begin
     alias cat bat
     alias cd scd
     alias e nvim
+    alias ls 'command ls --color=never'
     alias tm 'tmux new-session -A -s default'
 
     sn cd init fish | source

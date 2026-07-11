@@ -1,18 +1,23 @@
 function fish_prompt
     echo
-    set_color -o 4a4b52
+    # Left pill cap (Flexoki light gray background color)
+    set_color -o e6e4de
     echo -n ""
     set_color normal
-    set_color -o 8ab4f8
-    set_color -b 4a4b52
+    # Icon (Flexoki Black text on light gray background)
+    set_color -o 100f0f
+    set_color -b e6e4de
     echo -n "  "
     set_color normal
-    set_color -o 8ab4f8
-    set_color -b 4a4b52
+    # Path (Flexoki Black text on light gray background)
+    set_color -o 100f0f
+    set_color -b e6e4de
     echo -n (prompt_pwd)
     set_color normal
-    set_color -o 4a4b52
+    # Right pill cap (Flexoki light gray background color)
+    set_color -o e6e4de
     echo -n ""
     set_color normal
-    echo -n (set_color -o 8ab4f8)" ❯ "
+    # Prompt arrow (Flexoki Black)
+    echo -n (set_color -o 100f0f)" ❯ "
 end
