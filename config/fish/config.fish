@@ -52,6 +52,9 @@ status is-interactive; and begin
     if type -q direnv
       direnv hook fish | source
     end
+    if test -e ~/.nix-profile/etc/profile.d/nix.fish
+        source ~/.nix-profile/etc/profile.d/nix.fish
+    end
 
 
     alias cd scd
