@@ -9,10 +9,10 @@ mkdir -p "$(dirname "$LOG_FILE")"
 # Package Categorization
 sudo dnf copr enable lukenukem/asus-linux -y
 sudo dnf copr enable @xlibre/xlibre-xserver -y
-UTILS="git shadow-utils tailscale supergfxctl tuned"
+UTILS="shadow-utils tailscale supergfxctl tuned"
 WM="xlibre-xserver xlibre-xf86-input-libinput xdg-desktop-portal xdg-desktop-portal-gtk slock arandr xset xsetroot maim xclip feh brightnessctl"
 IME="fcitx5 fcitx5-configtool fcitx5-gtk fcitx5-unikey"
-MEDIA_GAME="gamescope mangohud steam lutris imv mpv obs-studio firefox" # launch games with `gamescope --mangoapp -W 1920 -H 1080 -r 144 -f -- %command%`
+MEDIA_GAME="gamescope mangohud steam lutris imv mpv obs-studio" # launch games with `gamescope --mangoapp -W 1920 -H 1080 -r 144 -f -- %command%`
 
 # Merge all into one master list
 ALL_PKGS="$UTILS $IME $MEDIA_GAME $WM"

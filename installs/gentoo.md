@@ -86,7 +86,6 @@ vim /etc/portage/package.accept_keywords
 ```
 
 ```
-*/*::guru ~amd64
 media-video/obs-studio ~amd64
 app-i18n/fcitx-unikey ~amd64
 gui-wm/gamescope ~amd64
@@ -212,7 +211,7 @@ emerge -q sys-kernel/linux-firmware sys-firmware/sof-firmware sys-kernel/install
 Set up user session stuff:
 
 ```bash
-emerge -q networkmanager wpa_supplicant sys-apps/dbus elogind dev-vcs/git fastfetch media-video/pipewire media-video/wireplumber sys-auth/polkit x11-base/xorg-drivers x11-drivers/nvidia-drivers x11-base/xorg-server x11-apps/xrandr xsetroot xdg-utils dmenu spectrwm flameshot slock x11-misc/xclip xdg-desktop-portal-gtk fcitx fcitx-configtool fcitx-gtk fcitx-unikey doas light sys-apps/lm-sensors playerctl app-containers/podman pulsemixer tailscale p7zip unrar unzip zip imv mpv obs-studio firefox-bin fish kitty sys-boot/grub os-prober efibootmgr bat bottom fd fzf ncdu ripgrep stow tmux noto noto-cjk noto-emoji jetbrains-mono symbols-nerd-font flatpak power-profiles-daemon
+emerge -q networkmanager wpa_supplicant sys-apps/dbus elogind dev-vcs/git media-video/pipewire media-video/wireplumber sys-auth/polkit x11-base/xorg-drivers x11-drivers/nvidia-drivers x11-base/xorg-server x11-apps/xrandr xsetroot xdg-utils slock x11-misc/xclip xdg-desktop-portal-gtk fcitx fcitx-configtool fcitx-gtk fcitx-unikey doas light pulsemixer tailscale unzip zip imv mpv obs-studio fish sys-boot/grub os-prober efibootmgr flatpak power-profiles-daemon
 ```
 
 ```bash
@@ -308,20 +307,6 @@ cat ~/.ssh/id_ed25519.pub
 ```bash
 doas rc-update add tailscale default
 doas rc-update add bluetooth default
-```
-
-# GURU PKGS:
-
-```bash
-doas emerge -q app-eselect/eselect-repository
-```
-```bash
-doas eselect repository enable guru
-doas emaint sync -r guru
-```
-
-```bash
-doas emerge -q yazi bluetuith vesktop-bin
 ```
 
 # Others
