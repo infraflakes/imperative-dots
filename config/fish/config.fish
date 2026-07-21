@@ -1,5 +1,8 @@
 set UID (id -u)
 
+# set -gx NOUVEAU_USE_ZINK '1'
+# set -gx DRI_PRIME '1'
+
 set -gx EDITOR 'nvim'
 set -gx VISUAL 'nvim'
 
